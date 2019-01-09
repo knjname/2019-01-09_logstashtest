@@ -1,0 +1,12 @@
+version: "2.4"
+
+services:
+
+  logstash:
+    build:
+      context: ./logstash
+    container_name: logstash
+    volumes:
+      - ./conf/logstash.conf:/conf/logstash.conf:ro
+      - ./input:/mnt/input
+    command: ["logstash", "-f", "/conf/logstash.conf"]
